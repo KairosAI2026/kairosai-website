@@ -561,7 +561,7 @@ async function send(msg){
   if(busy)return;busy=true;um(msg);document.getElementById('cbin').value='';showTyp();
   hist.push({role:'user',content:msg});
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:hist})});
+    const r=await fetch('https://shy-waterfall-da3fkairosai-proxy.jeanne-moe23.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:hist})});
     const data=await r.json();
     const reply=data.content&&data.content[0]?data.content[0].text:'Please try again!';
     hideTyp();hist.push({role:'assistant',content:reply});bm(reply);
@@ -586,7 +586,7 @@ function dSend(){const i=document.getElementById('dbin');const msg=i.value.trim(
 async function dSendMsg(msg){
   if(dBusy)return;dBusy=true;dAddMsg(msg,true);showTyp('dm');dHist.push({role:'user',content:msg});
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DEMO_SYS,messages:dHist})});
+    const r=await fetch('https://shy-waterfall-da3fkairosai-proxy.jeanne-moe23.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DEMO_SYS,messages:dHist})});
     const data=await r.json();
     const reply=data.content&&data.content[0]?data.content[0].text:'Connection issue — please try again.';
     hideTyp('dm');dHist.push({role:'assistant',content:reply});dAddMsg(reply,false);
@@ -614,7 +614,7 @@ function dSend2(){const i=document.getElementById('dbin2');const msg=i.value.tri
 async function dSendMsg2(msg){
   if(dBusy2)return;dBusy2=true;dAddMsg2(msg,true);showTyp('dm2');dHist2.push({role:'user',content:msg});
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DEMO_SYS2,messages:dHist2})});
+    const r=await fetch('https://shy-waterfall-da3fkairosai-proxy.jeanne-moe23.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DEMO_SYS2,messages:dHist2})});
     const data=await r.json();
     const reply=data.content&&data.content[0]?data.content[0].text:'Connection issue — please try again.';
     hideTyp('dm2');dHist2.push({role:'assistant',content:reply});dAddMsg2(reply,false);
